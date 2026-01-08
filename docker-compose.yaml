@@ -79,8 +79,8 @@ services:
     depends_on:
       - wg-easy
     volumes:
-      - /home/ubuntu/backblaze-httpd/rclone.conf:/config/rclone/rclone.conf:ro
-      - /home/ubuntu/backblaze-httpd/index.html:/config/rclone/index.html:ro
+      - /home/ubuntu/rclone.conf:/config/rclone/rclone.conf:ro
+      - /home/ubuntu/index.html:/config/rclone/index.html:ro
     command: >
       serve http b2:
       --config /config/rclone/rclone.conf
