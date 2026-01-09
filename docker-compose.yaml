@@ -1,11 +1,19 @@
+################################################################
+##
+##    VOLUMES
+##
+################################################################
 volumes:
   wg-easy_etc_wireguard:
   heimdall_config:
   qbittorrent_config:
 
 
-
-
+################################################################
+##
+##    NETWORKS
+##
+################################################################
 networks:
   wireguard:
     driver: bridge
@@ -17,11 +25,18 @@ networks:
         - subnet: fdcc:ad94:bacf:61a3::/64
 
 
-
-
+################################################################
+##
+##    SERVICES
+##
+################################################################
 services:
 
-
+  ##############################################################
+  ##
+  ##    WG-EASY
+  ##
+  ##############################################################
   wg-easy:
     environment:
       - PORT=51821
@@ -52,6 +67,11 @@ services:
       - net.ipv6.conf.default.forwarding=1
 
 
+  ##############################################################
+  ##
+  ##    HEIMDALL
+  ##
+  ##############################################################
   heimdall:
     image: lscr.io/linuxserver/heimdall:latest
     container_name: heimdall
@@ -68,6 +88,11 @@ services:
     restart: unless-stopped
 
 
+  ##############################################################
+  ##
+  ##    BACKBLAZE-HTTPD
+  ##
+  ##############################################################
   backblaze-httpd:
     image: rclone/rclone:latest
     container_name: backblaze-httpd_rclone
@@ -86,6 +111,11 @@ services:
     restart: unless-stopped
 
 
+  ##############################################################
+  ##
+  ##    QBITTORRENT
+  ##
+  ##############################################################
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
